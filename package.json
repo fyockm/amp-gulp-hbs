@@ -1,7 +1,8 @@
 {
-  "name": "gulp-handlebars",
+  "name": "amp-gulp-hbs",
   "author": "Drew Fyock",
-  "version": "0.0.0",
+  "version": "0.0.1",
+  "repo": "https://github.com/fyockm/amp-gulp-hbs",
   "main": "server.js",
   "dependencies": {
     "ampersand-dom": "^1.2.1",
