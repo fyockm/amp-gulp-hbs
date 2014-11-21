@@ -9,8 +9,6 @@ var compress = require('compression');
 var config = require('getconfig');
 var semiStatic = require('semi-static');
 var serveStatic = require('serve-static');
-var stylizer = require('stylizer');
-var templatizer = require('templatizer');
 var app = express();
 
 // a little helper for fixing paths for various environments
@@ -25,12 +23,6 @@ var fixPath = function (pathString) {
 app.use(compress());
 app.use(serveStatic(fixPath('public')));
 
-// we only want to expose tests in dev
-if (config.isDev) {
-    app.use(serveStatic(fixPath('test/assets')));
-    app.use(serveStatic(fixPath('test/spacemonkey')));
-}
-
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -42,7 +34,8 @@ if (!config.isDev) {
 app.use(helmet.xssFilter());
 app.use(helmet.nosniff());
 
-app.set('view engine', 'jade');
+app.set('views', fixPath('templates'));
+app.set('view engine', 'handlebars');
 
 
 // -----------------
@@ -92,29 +85,7 @@ new Moonboots({
             fixPath('public/css/app.css')
         ],
         browserify: {
-            debug: false
-        },
-        beforeBuildJS: function () {
-            // This re-builds our template files from jade each time the app's main
-            // js file is requested. Which means you can seamlessly change jade and
-            // refresh in your browser to get new templates.
-            if (config.isDev) {
-                templatizer(fixPath('templates'), fixPath('client/templates.js'));
-            }
-        },
-        beforeBuildCSS: function (done) {
-            // This re-builds css from stylus each time the app's main
-            // css file is requested. Which means you can seamlessly change stylus files
-            // and see new styles on refresh.
-            if (config.isDev) {
-                stylizer({
-                    infile: fixPath('public/css/app.styl'),
-                    outfile: fixPath('public/css/app.css'),
-                    development: true
-                }, done);
-            } else {
-                done();
-            }
+            debug: config.isDev
         }
     },
     server: app

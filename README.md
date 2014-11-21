@@ -1,6 +1,6 @@
 # Gulp Handlebars
 
-This app was generated with 'express' flavor of the [ampersand cli tool](http://ampersandjs.com/learn/quick-start-guide).
+This app was generated with the 'express' flavor of ampersand via the [ampersand cli tool](http://ampersandjs.com/learn/quick-start-guide).
 
 ## Why Hanldebars?
 
@@ -10,14 +10,16 @@ It's personal preference, but I like [Handlebars](http://handlebarsjs.com/) much
 
 ## Why Gulp?
 
-I chose to use a gulp plugin for Handlebars over other solutions. For me, it came down to 2 things:
+I chose to use a gulp plugin for Handlebars over other solutions for 2 main reasons:
+
 1. How the namespaces were created. I wanted to keep the same syntax as the generated app: `template: templates.includes.personView`
-2. Compatibility with Handlebars V2.0. At the time, the `gulp` plugin was the only option. `grunt-contrib-handlebars` was still on V1, and I prefer gulp as a front-end taskrunner anyhow.
+2. Compatibility with Handlebars V2.0. At the time, the `gulp` plugin was the only option. `grunt-contrib-handlebars` was still on V1, and I prefer gulp as a taskrunner for front-end  projects anyhow.
 
 Considered options:
 
-- [gulp-hanlebars](https://github.com/lazd/gulp-handlebars)
-- [grunt-contrib-handlebars](https://github.com/gruntjs/grunt-contrib-handlebars)
+- [gulp-hanlebars](https://www.npmjs.org/package/gulp-handlebars)
+- [grunt-contrib-handlebars](https://www.npmjs.org/package/grunt-contrib-handlebars)
+- [handlebars-precompiler](https://www.npmjs.org/package/handlebars-precompiler)
 - [handlebarizer](https://www.npmjs.org/package/handlebarizer)
 - [templatizer-hbs](https://www.npmjs.org/package/templatizer-hbs)
 

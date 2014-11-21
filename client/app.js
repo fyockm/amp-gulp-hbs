@@ -4,7 +4,6 @@ var logger = require('andlog');
 var config = require('clientconfig');
 
 var Router = require('./router');
-var tracking = require('./helpers/metrics');
 var MainView = require('./views/main');
 var Me = require('./models/me');
 var People = require('./models/persons');
